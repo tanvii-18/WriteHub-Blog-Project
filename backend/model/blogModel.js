@@ -3,16 +3,16 @@ import mongoose from "mongoose";
 const blogSchema = new mongoose.Schema(
   {
     name: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     content: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     author: {
-      typeof: mongoose.Schema.Types.ObjectId,
-      require: true,
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
     },
     publicationDate: {
       type: Date,

@@ -3,16 +3,16 @@ import mongoose from "mongoose";
 const authSchema = new mongoose.Schema(
   {
     name: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     email: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     password: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
