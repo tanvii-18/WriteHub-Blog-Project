@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -13,6 +13,9 @@ const blogSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
+    },
+    image: {
+      type: String,
     },
     publicationDate: {
       type: Date,
