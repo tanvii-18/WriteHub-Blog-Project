@@ -1,6 +1,6 @@
 import express from "express";
 import { protectedRoute } from "../middleware/authMiddleware.js";
-import { upload } from "../middleware/upload.js";
+import upload from "../middleware/upload.js";
 import {
   createBlog,
   getAllBlogs,
@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/", getAllBlogs);
 router.get("/:id", getBlogById);
-router.post("/", protectedRoute, upload.single("image"), createBlog);
+router.post("/create", protectedRoute, upload.single("image"), createBlog);
 router.put("/:id", protectedRoute, upload.single("image"), updateBlog);
 router.delete("/:id", protectedRoute, deleteBlog);
 

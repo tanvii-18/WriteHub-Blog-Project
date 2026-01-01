@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
+console.log("jwt", JWT_SECRET);
+
 // user registration
 export const signup = async (req, res) => {
   try {
@@ -42,7 +44,9 @@ export const login = async (req, res) => {
   }
 
   // jwt
-  const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "1h" });
+  const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+    expiresIn: "1h",
+  });
 
   res.cookie("token", token, {
     httpOnly: true,

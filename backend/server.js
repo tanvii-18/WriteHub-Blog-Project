@@ -1,4 +1,5 @@
 import express from "express";
+import "./config/env.js";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import blogsRouter from "./routes/blogRoutes.js";

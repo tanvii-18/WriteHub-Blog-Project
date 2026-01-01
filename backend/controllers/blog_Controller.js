@@ -4,16 +4,19 @@ export const createBlog = async (req, res) => {
   const { title, content } = req.body;
 
   try {
+    const image = req.file ? req.file.path : null;
+
     const blog = await Blogs.create({
       title,
       content,
-      image: req.file ? req.file.path : null,
+      image,
       author: req.userId,
     });
 
     res.status(201).json({ message: "blog is created!", blog });
   } catch (error) {
-    res.status(400).json({ message: "failed to created blog" });
+    console.log("clg error", error);
+    res.status(400).json({ message: "failed to created blog", error });
   }
 };
 

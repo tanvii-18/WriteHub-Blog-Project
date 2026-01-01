@@ -1,19 +1,18 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET;
-
 export const protectedRoute = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ message: "login first!" });
   }
 
   try {
-    const decode = jwt.verify(token, JWT_SECRET);
-    req.userId = decode.userId;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;
+
     next();
   } catch (err) {
-    res.json({ message: "invalid token" });
+    return res.status(401).json({ message: "invalid token" });
   }
 };
