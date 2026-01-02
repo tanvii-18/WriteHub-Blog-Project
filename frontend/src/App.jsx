@@ -6,6 +6,7 @@ function App() {
   useEffect(() => {
     api.get("/blogs").then((res) => console.log(res.data));
   }, []);
+
   return (
     <>
       <h1>WriteHub - Blogs</h1>
